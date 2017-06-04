@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Editar Cliente</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:outputLabel value="IdCustomer:" rendered="#{customerModificarBean.cliente.customerId != null}" /> 
+            <h:outputText value="#{customerModificarBean.cliente.customerId}" rendered="#{customerModificarBean.cliente.customerId != null}" />
+              <br/>
+            Name: <h:inputText value="#{customerModificarBean.cliente.name}" /> <br/>
+            Email: <h:inputText value="#{customerModificarBean.cliente.email}" /> <br/>        
+            Direccion: <h:inputText value="#{customerModificarBean.cliente.addressline1}" /> <br/>
+            <h:inputText value="#{customerModificarBean.cliente.addressline2}" /> <br/>
+            Supermercado: <h:selectOneMenu value="#{customerModificarBean.zipCodeSeleccionado}">
+                                <f:selectItems value="#{customerBean.listaSupermercados}" var="superm" 
+                                               itemValue="#{superm.zipCode}" itemLabel="#{superm.zipCode}"/>
+                          </h:selectOneMenu> <br/>
+            Codigo de descuento: 
+            <h:selectOneListbox value="#{customerModificarBean.discountSeleccionado}">
+                            <f:selectItems value="#{customerBean.listaDescuentos}" var="dc"
+                                           itemValue="#{dc.discountCode}" itemLabel="#{dc.rate}" />
+                        </h:selectOneListbox><br/>       
+                        <h:commandButton action="#{customerModificarBean.doGuardar()}" value="Guardar" />
+        </h:form>
+    </h:body>
+</html>
+
